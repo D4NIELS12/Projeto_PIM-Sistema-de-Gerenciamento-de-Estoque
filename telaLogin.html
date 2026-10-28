@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoFlow</title>
+    <!-- Fonte Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Estilos da página -->
+    <link rel="stylesheet" href="css/telaLogin.css">
+</head>
+
+<body>
+    <div class="tela-login">
+
+        <!-- Sidebar Esquerda -->
+        <aside class="sidebar-area">
+            <div class="brand-container">
+                <img src="img/logo.png" alt="AUTOFLOW Logo" class="brand-logo">
+            </div>
+
+            <div class="divider-line"></div>
+
+            <div class="sidebar-middle-info">
+                <h2>Controle absoluto em suas mãos.</h2>
+                <p>Monitore o estoque mínimo, analise o giro de peças de reposição e gerencie fornecedores em uma
+                    plataforma integrada e veloz.</p>
+            </div>
+
+            <a href="index.html" class="sidebar-link-back">
+                <svg class="icon-arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 12L4 8L10 4" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+                <span>Voltar ao Início</span>
+            </a>
+        </aside>
+
+        <!-- Área Central com Card de Login -->
+        <main class="form-view-area">
+            <form class="login-card" onsubmit="event.preventDefault();">
+
+                <div class="form-header">
+                    <h1>Bem-vindo de volta</h1>
+                    <p>Faça login para acessar o sistema</p>
+                </div>
+
+                <div class="inputs-fields">
+                    <!-- Campo E-mail -->
+                    <div class="field-group">
+                        <label for="email">Endereço de E-mail</label>
+                        <div class="input-wrapper">
+                            <svg class="input-icon" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2.25 4.5H15.75V13.5H2.25V4.5Z" stroke="#4B5563" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M2.25 4.5L9 9.75L15.75 4.5" stroke="#4B5563" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            <input type="email" id="email" placeholder="admin@autoflow.com" required>
+                        </div>
+                    </div>
+
+                    <!-- Campo Senha -->
+                    <div class="field-group">
+                        <label for="password">Senha</label>
+                        <div class="input-wrapper">
+                            <svg class="input-icon" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="3" y="8" width="12" height="8" rx="2" stroke="#4B5563" stroke-width="1.5" />
+                                <path d="M6 8V5.5C6 3.84315 7.34315 2.5 9 2.5C10.6569 2.5 12 3.84315 12 5.5V8"
+                                    stroke="#4B5563" stroke-width="1.5" stroke-linecap="round" />
+                            </svg>
+                            <input type="password" id="password" placeholder="••••••••••••" required>
+                            <button type="button" class="btn-toggle-password"
+                                aria-label="Alternar visibilidade da senha">
+                                <svg class="input-icon icon-eye" viewBox="0 0 18 18" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M1.5 9C1.5 9 4.5 3.75 9 3.75C13.5 3.75 16.5 9 16.5 9C16.5 9 13.5 14.25 9 14.25C4.5 14.25 1.5 9 1.5 9Z"
+                                        stroke="#4B5563" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <circle cx="9" cy="9" r="2.25" stroke="#4B5563" stroke-width="1.5" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Barra de Ações (Lembrar-me e Esqueceu a Senha) -->
+                <div class="actions-bar">
+                    <label class="remember-me-check">
+                        <input type="checkbox" id="remember">
+                        <span class="custom-checkbox">
+                            <svg class="check-icon" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2.5 6L5 8.5L9.5 3.5" stroke="white" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                        <span class="label-text">Lembrar-me</span>
+                    </label>
+                    <a href="#" class="forgot-password">Esqueceu a senha?</a>
+                </div>
+
+                <!-- Botão de Login -->
+                <div class="form-actions-bottom">
+                    <a type="submit" href="dashboard.html" class="btn-entrar-action">Entrar</a>
+                    <div class="register-text-row">
+                        <span>Ainda não tem conta? <a href="#" class="link-register">Criar nova conta</a></span>
+                    </div>
+                </div>
+
+            </form>
+        </main>
+
+    </div>
+</body>
+
+</html>
