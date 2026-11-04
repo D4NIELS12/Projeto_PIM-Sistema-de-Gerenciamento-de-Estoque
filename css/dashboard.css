@@ -13,6 +13,144 @@ body, html {
     color: #111827;
 }
 
+/* RESPONSIVIDADE DO DASHBOARD */
+
+/* Tablets e telas menores */
+@media (max-width: 1100px) {
+    .cards-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .charts-row {
+        height: auto;
+        flex-direction: column;
+    }
+
+    .sales-chart,
+    .category-chart {
+        width: 100%;
+        min-height: 280px;
+    }
+
+    .category-chart {
+        flex: 1;
+    }
+}
+
+/* Celulares */
+@media (max-width: 700px) {
+    .dashboard-layout {
+        min-width: 320px;
+    }
+
+    .sidebar {
+        width: 68px;
+        padding: 16px 8px;
+    }
+
+    .sidebar-logo-container {
+        aspect-ratio: auto;
+        height: 48px;
+    }
+
+    .nav-item {
+        justify-content: center;
+        padding: 12px 8px;
+    }
+
+    .nav-item span,
+    .sidebar-footer span {
+        display: none;
+    }
+
+    .sidebar-footer {
+        justify-content: center;
+        padding: 12px 8px;
+    }
+
+    .header {
+        height: auto;
+        min-height: 70px;
+        padding: 14px 16px;
+        gap: 12px;
+    }
+
+    .header-right {
+        gap: 12px;
+    }
+
+    .search-box {
+        width: 150px;
+    }
+
+    .profile-info {
+        display: none;
+    }
+
+    .content-body {
+        padding: 16px;
+        gap: 18px;
+    }
+
+    .welcome-section h2 {
+        font-size: 20px;
+    }
+
+    .welcome-section p {
+        font-size: 13px;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .card {
+        padding: 16px;
+    }
+
+    .card-value {
+        font-size: 22px;
+    }
+
+    .chart-graphic {
+        gap: 12px;
+    }
+
+    .bar {
+        width: 24px;
+    }
+
+    .pie-content {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .header-filters {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .period-filter {
+        max-width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .btn-export {
+        align-self: flex-start;
+    }
+
+    .table-container {
+        overflow-x: auto;
+    }
+
+    .custom-table {
+        min-width: 600px;
+    }
+}
+
 .dashboard-layout {
     display: flex;
     width: 100vw;
@@ -516,4 +654,17 @@ body, html {
 
 .btn-table-action:hover {
     background-color: #a51f1f;
+}
+
+/* Área onde os gráficos são desenhados */
+.chart-container {
+    position: relative;
+    flex: 1;
+    min-height: 220px;
+    width: 100%;
+}
+
+/* Evita que o canvas ultrapasse o espaço disponível */
+.chart-container canvas {
+    max-width: 100%;
 }
