@@ -116,7 +116,7 @@
                 <div class="cards-grid">
                     <div class="card">
                         <span class="card-title">Vendas no Período</span>
-                        <span class="card-value">R$ 45.290,00</span>
+                        <span class="card-value" id="valorVendas">R$ 0,00</span>
                         <div class="card-footer positive">
                             <span class="dot green"></span>
                             <span>+12,7% vs mês anterior</span>
@@ -125,7 +125,7 @@
 
                     <div class="card">
                         <span class="card-title">Pedidos Realizados</span>
-                        <span class="card-value">156</span>
+                        <span class="card-value" id="quantidadeVendas">0</span>
                         <div class="card-footer positive">
                             <span class="dot green"></span>
                             <span>+8,2% vs mês anterior</span>
@@ -134,7 +134,7 @@
 
                     <div class="card">
                         <span class="card-title">Produtos Cadastrados</span>
-                        <span class="card-value">1.248</span>
+                        <span class="card-value" id="totalProdutos">0</span>
                         <div class="card-footer">
                             <span class="dot gray"></span>
                             <span>Total cadastrado</span>
@@ -143,7 +143,7 @@
 
                     <div class="card">
                         <span class="card-title">Estoque Total</span>
-                        <span class="card-value">R$ 128.750,00</span>
+                        <span class="card-value" id="valorEstoque">R$ 0,00</span>
                         <div class="card-footer">
                             <span class="dot gray"></span>
                             <span>Valor de custo</span>
@@ -151,7 +151,6 @@
                     </div>
                 </div>
 
-                <!-- Seção de Gráficos -->
                 <!-- Seção de Gráficos -->
                 <div class="charts-row">
 
@@ -179,10 +178,13 @@
                 <div class="table-section-wrapper">
                     <div class="header-filters">
                         <div class="period-filter">
-                            <span>Período: Últimos 30 dias (01/06/2024 - 30/06/2024)</span>
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                                <path d="M3 4.5L6 7.5L9 4.5" stroke="#4B5563" stroke-width="2" stroke-linecap="round" />
-                            </svg>
+                            <label for="periodFilter">Período:</label>
+
+                            <select id="periodFilter">
+                                <option value="30dias">Últimos 30 dias</option>
+                                <option value="6meses" selected>Últimos 6 meses</option>
+                                <option value="ano">Este ano</option>
+                            </select>
                         </div>
                         <button class="btn-export">Exportar Relatório</button>
                     </div>
@@ -203,20 +205,9 @@
                                     <th style="width: 100px; text-align: right;">Ação</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="tabelaEstoqueCritico">
                                 <tr>
-                                    <td class="font-semibold">PF123</td>
-                                    <td>Pastilha de Freio Dianteira</td>
-                                    <td class="text-danger font-bold">5 un</td>
-                                    <td class="text-muted">20 un</td>
-                                    <td style="text-align: right;"><a href="#" class="btn-table-action">Ver</a></td>
-                                </tr>
-                                <tr>
-                                    <td class="font-semibold">FO456</td>
-                                    <td>Filtro de Óleo Motor</td>
-                                    <td class="text-danger font-bold">8 un</td>
-                                    <td class="text-muted">25 un</td>
-                                    <td style="text-align: right;"><a href="#" class="btn-table-action">Ver</a></td>
+                                    <td colspan="5">Carregando produtos...</td>
                                 </tr>
                             </tbody>
                         </table>
