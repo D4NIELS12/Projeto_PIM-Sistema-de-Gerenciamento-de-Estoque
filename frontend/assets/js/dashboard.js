@@ -91,9 +91,18 @@ const categoryChart = new Chart(categoryCanvas, {
         plugins: {
             legend: {
                 position: "right"
+            },
+
+        tooltip: {
+            callbacks: {
+                label: function(context) {
+                    return context.label + ": " +
+                        context.parsed + " itens";
+                }
             }
         }
     }
+}
 });
 
 // ==============================
@@ -134,7 +143,7 @@ async function carregarGraficos() {
 
         categoryChart.data.datasets[0].data =
             dados.categorias.valores;
-
+            
         // Atualiza a apresentação dos gráficos
         salesChart.update();
         categoryChart.update();
@@ -154,7 +163,6 @@ periodFilter.addEventListener("change", function () {
 
     carregarGraficos();
     carregarIndicadores();
-
 });
 
 // Carrega os gráficos ao abrir o dashboard
@@ -181,9 +189,9 @@ async function carregarEstoqueCritico() {
 
         const produtos = await resposta.json();
 
-        // Filtra produtos cuja quantidade está no mínimo ou abaixo dele
+        // Filtra produtos identificados pelo modulo C
         const produtosCriticos = produtos.filter(produto =>
-            produto.quantidade <= produto.quantidade_minima
+            produto.estoque_baixo === true
         );
 
         // Limpa os dados anteriores da tabela
