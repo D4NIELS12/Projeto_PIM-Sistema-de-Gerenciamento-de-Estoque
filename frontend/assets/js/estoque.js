@@ -133,6 +133,8 @@ function escaparHTML(valor) {
 }
 
 // Monta a tabela
+
+// Monta a tabela
 function renderizarTabela(lista) {
     const tabela = document.getElementById("tabelaProdutos");
 
@@ -167,6 +169,14 @@ function renderizarTabela(lista) {
                 <td>${textoStatus}</td>
                 <td>
                     <button
+                        class="btn-ajustar"
+                        data-id="${produto.id}"
+                        type="button"
+                    >
+                        Ajustar
+                    </button>
+
+                    <button
                         class="btn-editar"
                         data-id="${produto.id}"
                         type="button"
@@ -186,6 +196,7 @@ function renderizarTabela(lista) {
         `;
     }).join("");
 }
+
 
 // ==========================================
 // EXCLUIR PRODUTO
@@ -230,11 +241,13 @@ async function excluirProduto(id) {
 
 // Detecta cliques nos botões da tabela
 
+
 document.getElementById("tabelaProdutos")
     .addEventListener("click", (evento) => {
 
         const botaoExcluir = evento.target.closest(".btn-excluir");
         const botaoEditar = evento.target.closest(".btn-editar");
+        const botaoAjustar = evento.target.closest(".btn-ajustar");
 
         if (botaoExcluir) {
             const id = Number(botaoExcluir.dataset.id);
@@ -244,6 +257,11 @@ document.getElementById("tabelaProdutos")
         if (botaoEditar) {
             const id = Number(botaoEditar.dataset.id);
             editarProduto(id);
+        }
+
+        if (botaoAjustar) {
+            const id = Number(botaoAjustar.dataset.id);
+            abrirModalAjuste(id);
         }
     });
 
@@ -542,3 +560,180 @@ async function editarProduto(id) {
 
     modalCadastro.classList.add("ativo");
 }
+
+// ==========================================
+// CONTROLE DO MODAL DE AJUSTE
+// ==========================================
+
+const modalAjuste = document.getElementById("modalAjuste");
+
+const formAjuste = document.getElementById("formAjuste");
+
+const btnFecharAjuste = document.getElementById("btnFecharAjuste");
+const btnCancelarAjuste = document.getElementById("btnCancelarAjuste");
+
+let idProdutoAjustando = null;
+
+
+// ==========================================
+// ABRIR MODAL DE AJUSTE
+// ==========================================
+
+function abrirModalAjuste(id) {
+
+    const produto = produtos.find(
+        produto => Number(produto.id) === id
+    );
+
+    if (!produto) {
+        alert("Produto não encontrado.");
+        return;
+    }
+
+    idProdutoAjustando = id;
+
+    // Preenche as informações do produto
+    document.getElementById("produtoAjuste").value =
+        produto.nome;
+
+    document.getElementById("quantidadeAtualAjuste").value =
+        produto.quantidade;
+
+    // Prepara o campo para receber a nova quantidade
+    document.getElementById("novaQuantidade").value =
+        produto.quantidade;
+
+    // Limpa o motivo
+    document.getElementById("motivoAjuste").value = "";
+
+    // Abre o modal
+    modalAjuste.classList.add("ativo");
+}
+
+// ==========================================
+// FECHAR MODAL DE AJUSTE
+// ==========================================
+
+function fecharModalAjuste() {
+
+    modalAjuste.classList.remove("ativo");
+
+    formAjuste.reset();
+
+    idProdutoAjustando = null;
+}
+
+// Botão X
+btnFecharAjuste.addEventListener("click", fecharModalAjuste);
+
+// Botão cancelar
+btnCancelarAjuste.addEventListener("click", fecharModalAjuste);
+
+// Fecha ao clicar fora do modal
+modalAjuste.addEventListener("click", (evento) => {
+
+    if (evento.target === modalAjuste) {
+        fecharModalAjuste();
+    }
+
+});
+
+// Fecha ao pressionar ESC
+document.addEventListener("keydown", (evento) => {
+
+    if (
+        evento.key === "Escape" &&
+        modalAjuste.classList.contains("ativo")
+    ) {
+        fecharModalAjuste();
+    }
+
+});
+
+ // ==========================================
+ // ENVIAR AJUSTE DE ESTOQUE
+ // ==========================================
+
+formAjuste.addEventListener("submit", async (evento) => {
+
+    evento.preventDefault();
+
+    const botaoSalvar = document.getElementById("btnSalvarAjuste");
+
+    const quantidadeNova = Number(
+        document.getElementById("novaQuantidade").value
+    );
+
+    const motivo = document.getElementById("motivoAjuste").value.trim();
+
+    // Validação da quantidade
+    if (
+        !Number.isSafeInteger(quantidadeNova) ||
+        quantidadeNova < 0 ||
+        quantidadeNova > 2147483647
+    ) {
+        alert("Informe uma quantidade inteira válida.");
+        return;
+    }
+
+    // Validação do motivo
+    if (!motivo) {
+        alert("Informe o motivo do ajuste.");
+        return;
+    }
+
+    // Monta os dados que serão enviados
+    const dadosAjuste = {
+        quantidade_nova: quantidadeNova,
+        motivo: motivo
+    };
+
+    try {
+
+        botaoSalvar.disabled = true;
+        botaoSalvar.textContent = "Ajustando...";
+
+        // Envia o ajuste para o backend
+        const resposta = await fetch(
+            `http://127.0.0.1:5000/api/estoque/${idProdutoAjustando}/ajuste`,
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(dadosAjuste)
+            }
+        );
+
+        const resultado = await resposta.json();
+
+        if (!resposta.ok) {
+            throw new Error(
+                resultado.erro || "Não foi possível ajustar o estoque."
+            );
+        }
+
+        // Fecha o modal
+        fecharModalAjuste();
+
+        // Atualiza produtos, indicadores e tabela
+        await carregarProdutos();
+
+        alert("Estoque ajustado com sucesso!");
+
+    } catch (erro) {
+
+        console.error("Erro ao ajustar estoque:", erro);
+
+        alert(erro.message);
+
+    } finally {
+
+        botaoSalvar.disabled = false;
+        botaoSalvar.textContent = "Confirmar ajuste";
+
+    }
+
+});

@@ -261,3 +261,48 @@
         grid-template-columns: 1fr;
     }
 }
+
+
+/* ==========================================
+   BOTÕES DE AÇÕES DA TABELA
+========================================== */
+
+.btn-ajustar,
+.btn-editar,
+.btn-excluir {
+    border: none;
+    padding: 7px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 2px;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.btn-ajustar {
+    background-color: #e8eefc;
+    color: #2455a4;
+}
+
+.btn-ajustar:hover {
+    background-color: #d5e1fa;
+}
+
+.btn-editar {
+    background-color: #fff0d6;
+    color: #986000;
+}
+
+.btn-editar:hover {
+    background-color: #ffe3b3;
+}
+
+.btn-excluir {
+    background-color: #fde5e5;
+    color: #bd2525;
+}
+
+.btn-excluir:hover {
+    background-color: #facdcd;
+}
