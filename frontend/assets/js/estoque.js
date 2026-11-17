@@ -2,6 +2,7 @@
 const API_URL = "http://127.0.0.1:5000/api/produtos";
 
 let produtos = [];
+let idProdutoEditando = null;
 
 // Carrega os produtos do backend
 async function carregarProdutos() {
@@ -164,11 +165,87 @@ function renderizarTabela(lista) {
                 <td>${escaparHTML(produto.quantidade)}</td>
                 <td>${escaparHTML(produto.quantidade_minima)}</td>
                 <td>${textoStatus}</td>
-                <td>Em breve</td>
+                <td>
+                    <button
+                        class="btn-editar"
+                        data-id="${produto.id}"
+                        type="button"
+                    >
+                        Editar
+                    </button>
+
+                    <button
+                        class="btn-excluir"
+                        data-id="${produto.id}"
+                        type="button"
+                    >
+                        Excluir
+                    </button>
+                </td>
             </tr>
         `;
     }).join("");
 }
+
+// ==========================================
+// EXCLUIR PRODUTO
+// ==========================================
+
+async function excluirProduto(id) {
+
+    const confirmar = confirm(
+        "Tem certeza que deseja excluir este produto?"
+    );
+
+    if (!confirmar) {
+        return;
+    }
+
+    try {
+
+        const resposta = await fetch(`${API_URL}/${id}`, {
+            method: "DELETE"
+        });
+
+        const resultado = await resposta.json();
+
+        if (!resposta.ok) {
+            throw new Error(
+                resultado.erro || "Não foi possível excluir o produto."
+            );
+        }
+
+        alert("Produto excluído com sucesso!");
+
+        // Atualiza a tabela e os indicadores
+        await carregarProdutos();
+
+    } catch (erro) {
+
+        console.error("Erro ao excluir produto:", erro);
+
+        alert(erro.message);
+    }
+}
+
+// Detecta cliques nos botões da tabela
+
+document.getElementById("tabelaProdutos")
+    .addEventListener("click", (evento) => {
+
+        const botaoExcluir = evento.target.closest(".btn-excluir");
+        const botaoEditar = evento.target.closest(".btn-editar");
+
+        if (botaoExcluir) {
+            const id = Number(botaoExcluir.dataset.id);
+            excluirProduto(id);
+        }
+
+        if (botaoEditar) {
+            const id = Number(botaoEditar.dataset.id);
+            editarProduto(id);
+        }
+    });
 
 // Eventos dos filtros
 document.getElementById("buscarProduto")
@@ -190,6 +267,8 @@ carregarProdutos();
 
 const modalCadastro = document.getElementById("modalCadastro");
 
+const formCadastro = document.getElementById("formCadastroProduto");
+
 const btnCadastrar = document.getElementById("btnCadastrarProduto");
 const btnFechar = document.getElementById("btnFecharModal");
 const btnCancelar = document.getElementById("btnCancelarCadastro");
@@ -199,9 +278,28 @@ btnCadastrar.addEventListener("click", () => {
     modalCadastro.classList.add("ativo");
 });
 
-// Fecha o modal
 function fecharModal() {
+
     modalCadastro.classList.remove("ativo");
+
+    // Limpa os dados do formulário
+    formCadastro.reset();
+
+    // Volta para o modo de cadastro
+    idProdutoEditando = null;
+
+    // Reativa e exibe o campo de quantidade
+    const campoQuantidade = document.getElementById("quantidade");
+
+    campoQuantidade.disabled = false;
+    campoQuantidade.closest(".form-group").style.display = "";
+
+    // Restaura o título e o botão
+    document.querySelector(".modal-header h2").textContent =
+        "Cadastrar produto";
+
+    document.querySelector(".btn-salvar").textContent =
+        "Cadastrar produto";
 }
 
 btnFechar.addEventListener("click", fecharModal);
@@ -288,14 +386,12 @@ async function carregarDadosFormulario() {
 }
 
 // Inicializa os dados dos campos
-carregarDadosFormulario();
+const dadosFormularioCarregados = carregarDadosFormulario();
 
 
 // ==========================================
 // CADASTRAR PRODUTO
 // ==========================================
-
-const formCadastro = document.getElementById("formCadastroProduto");
 
 formCadastro.addEventListener("submit", async (evento) => {
 
@@ -317,62 +413,132 @@ formCadastro.addEventListener("submit", async (evento) => {
         preco_custo: Number(document.getElementById("precoCusto").value),
         preco_venda: Number(document.getElementById("precoVenda").value),
 
-        quantidade: Number(document.getElementById("quantidade").value),
-
         quantidade_minima: Number(
             document.getElementById("quantidadeMinima").value
         )
     };
 
+    // Só envia a quantidade atual durante o cadastro
+    if (idProdutoEditando === null) {
+        dadosProduto.quantidade = Number(
+            document.getElementById("quantidade").value
+        );
+    }
+
     try {
 
         botaoSalvar.disabled = true;
-        botaoSalvar.textContent = "Cadastrando...";
 
-        // Envia os dados para o Flask
-        const resposta = await fetch(
-            "http://127.0.0.1:5000/api/produtos",
-            {
-                method: "POST",
+        const editando = idProdutoEditando !== null;
 
-                headers: {
-                    "Content-Type": "application/json"
-                },
+        botaoSalvar.textContent = editando
+            ? "Salvando..."
+            : "Cadastrando...";
 
-                body: JSON.stringify(dadosProduto)
-            }
-        );
+        // Define a rota e o método conforme a operação
+        const url = editando
+            ? `${API_URL}/${idProdutoEditando}`
+            : API_URL;
+
+        const metodo = editando ? "PUT" : "POST";
+
+        const resposta = await fetch(url, {
+            method: metodo,
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify(dadosProduto)
+        });
 
         const resultado = await resposta.json();
 
         if (!resposta.ok) {
             throw new Error(
-                resultado.erro || "Não foi possível cadastrar o produto."
+                resultado.erro || "Não foi possível salvar o produto."
             );
         }
 
-        // Limpa o formulário
-        formCadastro.reset();
-
-        // Fecha o modal
+        // Fecha e limpa o modal
         fecharModal();
 
-        // Atualiza a tabela e os indicadores
+        // Atualiza tabela e indicadores
         await carregarProdutos();
 
-        alert("Produto cadastrado com sucesso!");
+        alert(
+            editando
+                ? "Produto atualizado com sucesso!"
+                : "Produto cadastrado com sucesso!"
+        );
 
     } catch (erro) {
 
-        console.error("Erro ao cadastrar produto:", erro);
+        console.error("Erro ao salvar produto:", erro);
 
         alert(erro.message);
 
     } finally {
 
         botaoSalvar.disabled = false;
-        botaoSalvar.textContent = "Cadastrar produto";
 
+        botaoSalvar.textContent = idProdutoEditando !== null
+            ? "Salvar alterações"
+            : "Cadastrar produto";
     }
 
 });
+
+
+// ==========================================
+// ABRIR EDIÇÃO DO PRODUTO
+// ==========================================
+
+async function editarProduto(id) {
+
+    await dadosFormularioCarregados;
+
+    const produto = produtos.find(
+        produto => Number(produto.id) === id
+    );
+
+    if (!produto) {
+        alert("Produto não encontrado.");
+        return;
+    }
+
+    idProdutoEditando = id;
+
+    // Preenche os campos do formulário
+    document.getElementById("codigo").value = produto.codigo;
+    document.getElementById("nome").value = produto.nome;
+    document.getElementById("descricao").value = produto.descricao || "";
+
+    document.getElementById("categoria").value = produto.id_categoria;
+
+    document.getElementById("fornecedor").value =
+        produto.id_fornecedor || "";
+
+    document.getElementById("precoCusto").value = produto.preco_custo;
+    document.getElementById("precoVenda").value = produto.preco;
+
+    document.getElementById("quantidadeMinima").value =
+        produto.quantidade_minima;
+
+    // Quantidade atual não será editada diretamente
+    const campoQuantidade = document.getElementById("quantidade");
+
+    campoQuantidade.value = produto.quantidade;
+    campoQuantidade.disabled = true;
+
+    campoQuantidade.closest(".form-group").style.display = "none";
+
+    // Altera o título e o botão do modal
+    document.querySelector(".modal-header h2").textContent =
+        "Editar produto";
+
+    document.querySelector(".btn-salvar").textContent =
+        "Salvar alterações";
+
+    modalCadastro.classList.add("ativo");
+}
