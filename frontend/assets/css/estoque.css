@@ -221,48 +221,6 @@
     background: #a51f1f;
 }
 
-/* Responsividade */
-@media (max-width: 600px) {
-    .form-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .form-group-full {
-        grid-column: auto;
-    }
-
-    .modal-container {
-        padding: 18px;
-    }
-}
-
-@media (max-width: 700px) {
-    .estoque-header {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
-    .btn-cadastrar {
-        width: 100%;
-    }
-
-    .estoque-filtros {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .estoque-filtros input,
-    .estoque-filtros select {
-        width: 100%;
-        min-width: 0;
-    }
-
-    .estoque-cards {
-        grid-template-columns: 1fr;
-    }
-}
-
-
 /* ==========================================
    BOTÕES DE AÇÕES DA TABELA
 ========================================== */
@@ -305,4 +263,75 @@
 
 .btn-excluir:hover {
     background-color: #facdcd;
+}
+
+/* ==========================================
+   AÇÕES DO CABEÇALHO DO ESTOQUE
+========================================== */
+
+.estoque-acoes {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-entrada {
+    background-color: #ffffff;
+    color: #b42323;
+    border: 1px solid #b42323;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-entrada:hover {
+    background-color: #fff1f1;
+}
+
+/* Modal de entrada */
+.modal-entrada-container {
+    max-width: 500px;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group-full {
+        grid-column: auto;
+    }
+
+    .modal-container {
+        padding: 18px;
+    }
+}
+
+@media (max-width: 700px) {
+    .estoque-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .btn-cadastrar {
+        width: 100%;
+    }
+
+    .estoque-filtros {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .estoque-filtros input,
+    .estoque-filtros select {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .estoque-cards {
+        grid-template-columns: 1fr;
+    }
 }

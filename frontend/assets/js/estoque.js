@@ -737,3 +737,179 @@ formAjuste.addEventListener("submit", async (evento) => {
     }
 
 });
+
+// ==========================================
+// CONTROLE DO MODAL DE ENTRADA
+// ==========================================
+
+const modalEntrada = document.getElementById("modalEntrada");
+
+const formEntrada = document.getElementById("formEntrada");
+
+const btnRegistrarEntrada = document.getElementById("btnRegistrarEntrada");
+
+const btnFecharEntrada = document.getElementById("btnFecharEntrada");
+
+const btnCancelarEntrada = document.getElementById("btnCancelarEntrada");
+
+
+// ==========================================
+// ABRIR MODAL DE ENTRADA
+// ==========================================
+
+btnRegistrarEntrada.addEventListener("click", () => {
+
+    carregarProdutosEntrada();
+
+    modalEntrada.classList.add("ativo");
+
+});
+
+
+// ==========================================
+// FECHAR MODAL DE ENTRADA
+// ==========================================
+
+function fecharModalEntrada() {
+
+    modalEntrada.classList.remove("ativo");
+
+    formEntrada.reset();
+
+}
+
+btnFecharEntrada.addEventListener("click", fecharModalEntrada);
+
+btnCancelarEntrada.addEventListener("click", fecharModalEntrada);
+
+
+// Fecha ao clicar fora do modal
+modalEntrada.addEventListener("click", (evento) => {
+
+    if (evento.target === modalEntrada) {
+        fecharModalEntrada();
+    }
+
+});
+
+
+// ==========================================
+// CARREGAR PRODUTOS NO SELECT
+// ==========================================
+
+function carregarProdutosEntrada() {
+
+    const selectProduto = document.getElementById("produtoEntrada");
+
+    selectProduto.innerHTML = `
+        <option value="">Selecione um produto</option>
+    `;
+
+    produtos.forEach(produto => {
+
+        const opcao = document.createElement("option");
+
+        opcao.value = produto.id;
+
+        opcao.textContent = `${produto.codigo} - ${produto.nome}`;
+
+        selectProduto.appendChild(opcao);
+
+    });
+
+}
+
+// ==========================================
+// REGISTRAR ENTRADA DE ESTOQUE
+// ==========================================
+
+formEntrada.addEventListener("submit", async (evento) => {
+
+    evento.preventDefault();
+
+    const botaoSalvar = document.getElementById("btnSalvarEntrada");
+
+    const idProduto = Number(
+        document.getElementById("produtoEntrada").value
+    );
+
+    const quantidade = Number(
+        document.getElementById("quantidadeEntrada").value
+    );
+
+    const motivo = document.getElementById("motivoEntrada").value.trim();
+
+
+    // Validação do produto
+    if (!idProduto) {
+        alert("Selecione um produto.");
+        return;
+    }
+
+    // Validação da quantidade
+    if (
+        !Number.isSafeInteger(quantidade) ||
+        quantidade <= 0 ||
+        quantidade > 2147483647
+    ) {
+        alert("Informe uma quantidade inteira maior que zero.");
+        return;
+    }
+
+    // Validação do motivo
+    if (!motivo) {
+        alert("Informe o motivo da entrada.");
+        return;
+    }
+
+    const dadosEntrada = {
+        quantidade: quantidade,
+        motivo: motivo
+    };
+
+    try {
+
+        botaoSalvar.disabled = true;
+        botaoSalvar.textContent = "Registrando...";
+
+        const resposta = await fetch(
+            `http://127.0.0.1:5000/api/estoque/${idProduto}/entrada`,
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(dadosEntrada)
+            }
+        );
+
+        const resultado = await resposta.json();
+
+        if (!resposta.ok) {
+            throw new Error(
+                resultado.erro || "Não foi possível registrar a entrada."
+            );
+        }
+
+        fecharModalEntrada();
+
+        await carregarProdutos();
+
+        alert("Entrada de estoque registrada com sucesso!");
+
+    } catch (erro) {
+
+        console.error("Erro ao registrar entrada:", erro);
+
+        alert(erro.message);
+
+    } finally {
+
+        botaoSalvar.disabled = false;
+        botaoSalvar.textContent = "Confirmar entrada";
+
+    }
+
+});

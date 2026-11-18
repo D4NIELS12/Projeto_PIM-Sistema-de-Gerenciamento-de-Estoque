@@ -68,6 +68,10 @@
                     <span>Fornecedores</span>
                 </a>
 
+                <a href="../pages/movimentacoes.html" class="nav-item">
+                    <span>Movimentações</span>
+                </a>
+
             </nav>
 
             <a href="../pages/index.html" class="sidebar-footer">
@@ -166,16 +170,20 @@
                 <section class="table-section-wrapper">
 
                     <div class="estoque-header">
-
                         <div>
                             <h3>Produtos cadastrados</h3>
                             <p>Consulte e gerencie os produtos do estoque.</p>
                         </div>
 
-                        <button class="btn-cadastrar" id="btnCadastrarProduto">
-                            + Cadastrar produto
-                        </button>
+                        <div class="estoque-acoes">
+                            <button class="btn-entrada" id="btnRegistrarEntrada">
+                                + Registrar entrada
+                            </button>
 
+                            <button class="btn-cadastrar" id="btnCadastrarProduto">
+                                + Cadastrar produto
+                            </button>
+                        </div>
                     </div>
 
                     <!-- Filtros -->
@@ -389,7 +397,59 @@
 
     </div>
 
+    <!-- MODAL DE REGISTRO DE ENTRADA -->
+    <div class="modal-overlay" id="modalEntrada">
 
+        <div class="modal-container modal-entrada-container">
+
+            <div class="modal-header">
+                <h2>Registrar entrada de estoque</h2>
+
+                <button type="button" class="btn-fechar" id="btnFecharEntrada">
+                    &times;
+                </button>
+            </div>
+
+            <form id="formEntrada">
+
+                <div class="form-group">
+                    <label for="produtoEntrada">Produto</label>
+
+                    <select id="produtoEntrada" required>
+                        <option value="">Selecione um produto</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="quantidadeEntrada">Quantidade recebida</label>
+
+                    <input type="number" id="quantidadeEntrada" min="1" step="1" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="motivoEntrada">Motivo da entrada</label>
+
+                    <input type="text" id="motivoEntrada" maxlength="150" placeholder="Ex.: Reposição de produtos"
+                        required>
+                </div>
+
+                <div class="modal-actions">
+
+                    <button type="button" class="btn-cancelar" id="btnCancelarEntrada">
+                        Cancelar
+                    </button>
+
+                    <button type="submit" class="btn-salvar" id="btnSalvarEntrada">
+                        Confirmar entrada
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
 
     <!-- JavaScript -->
     <script src="../assets/js/estoque.js"></script>

@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AUTOFLOW - Movimentações</title>
+
+    <!-- Fonte Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/movimentacoes.css">
+
+</head>
+
+<body>
+
+    <div class="dashboard-layout">
+
+        <!-- MENU LATERAL -->
+        <aside class="sidebar">
+
+            <div class="sidebar-logo-container">
+                <img src="../assets/img/logo.png" alt="AUTOFLOW Logo" class="sidebar-logo">
+            </div>
+
+            <nav class="nav-list">
+
+                <a href="../pages/dashboard.html" class="nav-item">
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="../pages/estoque.html" class="nav-item">
+                    <span>Estoque</span>
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span>Vendas</span>
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span>Fornecedores</span>
+                </a>
+
+                <a href="../pages/movimentacoes.html" class="nav-item active">
+                    <span>Movimentações</span>
+                </a>
+
+            </nav>
+
+            <a href="../pages/index.html" class="sidebar-footer">
+                <span>Sair</span>
+            </a>
+
+        </aside>
+
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="main-content">
+
+            <!-- CABEÇALHO -->
+            <header class="header">
+
+                <div class="header-left">
+
+                    <div class="breadcrumbs">
+                        <span>Início</span>
+                        <span>/</span>
+                        <span>Movimentações</span>
+                    </div>
+
+                    <h1>Movimentações</h1>
+
+                </div>
+
+                <div class="header-right">
+
+                    <div class="search-box">
+                        <input type="text" placeholder="Buscar...">
+                    </div>
+
+                    <div class="profile">
+
+                        <div class="avatar">AD</div>
+
+                        <div class="profile-info">
+                            <span class="profile-name">Admin</span>
+                            <span class="profile-role">Administrador</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- CORPO DA PÁGINA -->
+            <div class="content-body">
+
+                <!-- APRESENTAÇÃO -->
+                <section class="welcome-section">
+
+                    <h2>Histórico de Movimentações</h2>
+
+                    <p>
+                        Acompanhe todas as entradas, saídas e alterações
+                        realizadas no estoque.
+                    </p>
+
+                </section>
+
+
+                <!-- INDICADORES -->
+                <section class="cards-grid movimentacoes-cards">
+
+                    <div class="card">
+
+                        <span class="card-title">Total de Movimentações</span>
+
+                        <span class="card-value" id="totalMovimentacoes">0</span>
+
+                        <div class="card-footer">
+                            Registros realizados
+                        </div>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <span class="card-title">Entradas</span>
+
+                        <span class="card-value" id="totalEntradas">0</span>
+
+                        <div class="card-footer">
+                            Reposições de produtos
+                        </div>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <span class="card-title">Saídas</span>
+
+                        <span class="card-value" id="totalSaidas">0</span>
+
+                        <div class="card-footer">
+                            Produtos retirados
+                        </div>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <span class="card-title">Ajustes</span>
+
+                        <span class="card-value" id="totalAjustes">0</span>
+
+                        <div class="card-footer">
+                            Alterações de quantidade
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- HISTÓRICO -->
+                <section class="table-section-wrapper">
+
+                    <div class="movimentacoes-header">
+
+                        <div>
+                            <h3>Registro de movimentações</h3>
+
+                            <p>
+                                Consulte o histórico de alterações do estoque.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- FILTROS -->
+                    <div class="movimentacoes-filtros">
+
+                        <input
+                            type="text"
+                            id="buscarMovimentacao"
+                            placeholder="Buscar por produto, código ou motivo..."
+                        >
+
+                        <select id="filtroTipo">
+                            <option value="">Todos os tipos</option>
+                            <option value="entrada">Entrada</option>
+                            <option value="saida">Saída</option>
+                            <option value="ajuste">Ajuste</option>
+                        </select>
+
+                    </div>
+
+
+                    <!-- TABELA -->
+                    <div class="table-container">
+
+                        <table class="custom-table">
+
+                            <thead>
+
+                                <tr>
+                                    <th>Produto</th>
+                                    <th>Código</th>
+                                    <th>Tipo</th>
+                                    <th>Quantidade</th>
+                                    <th>Saldo anterior</th>
+                                    <th>Saldo posterior</th>
+                                    <th>Motivo</th>
+                                    <th>Data e horário</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="tabelaMovimentacoes">
+
+                                <tr>
+                                    <td colspan="8">
+                                        Carregando movimentações...
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="../assets/js/movimentacoes.js"></script>
+
+</body>
+
+</html>

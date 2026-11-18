@@ -133,6 +133,135 @@ def ajustar_estoque(id_produto):
     finally:
         cursor.close()
         conexao.close()
+        
+
+# ==========================================
+# REGISTRAR ENTRADA DE ESTOQUE
+# ==========================================
+
+@movimentacoes_bp.route(
+    "/api/estoque/<int:id_produto>/entrada",
+    methods=["POST"]
+)
+def registrar_entrada(id_produto):
+
+    dados = request.get_json(silent=True)
+
+    if not isinstance(dados, dict):
+        return jsonify({
+            "erro": "Dados inválidos."
+        }), 400
+
+    quantidade = dados.get("quantidade")
+    motivo = dados.get("motivo")
+
+    # Valida a quantidade recebida
+    if (
+        isinstance(quantidade, bool)
+        or not isinstance(quantidade, int)
+        or quantidade <= 0
+        or quantidade > 2147483647
+    ):
+        return jsonify({
+            "erro": "Informe uma quantidade inteira maior que zero."
+        }), 400
+
+    # Valida o motivo
+    if not isinstance(motivo, str) or not motivo.strip():
+        return jsonify({
+            "erro": "Informe o motivo da entrada."
+        }), 400
+
+    motivo = motivo.strip()
+
+    if len(motivo) > 150:
+        return jsonify({
+            "erro": "O motivo deve possuir no máximo 150 caracteres."
+        }), 400
+
+    conexao = conectar_banco()
+    cursor = conexao.cursor()
+
+    try:
+
+        # Busca o estoque atual e bloqueia a linha
+        cursor.execute("""
+            SELECT
+                e.id_estoque,
+                e.quantidade_atual
+            FROM estoque e WITH (UPDLOCK, ROWLOCK)
+            INNER JOIN produto p
+                ON p.id_produto = e.id_produto
+            WHERE p.id_produto = ?
+              AND p.ativo = 1
+        """, (id_produto,))
+
+        estoque = cursor.fetchone()
+
+        if not estoque:
+            return jsonify({
+                "erro": "Produto não encontrado."
+            }), 404
+
+        id_estoque = estoque[0]
+        quantidade_anterior = int(estoque[1])
+
+        # Calcula a nova quantidade
+        quantidade_posterior = quantidade_anterior + quantidade
+
+        if quantidade_posterior > 2147483647:
+            return jsonify({
+                "erro": "A quantidade ultrapassa o limite permitido."
+            }), 400
+
+        # Atualiza o estoque
+        cursor.execute("""
+            UPDATE estoque
+            SET quantidade_atual = ?
+            WHERE id_estoque = ?
+        """, (quantidade_posterior, id_estoque))
+
+        # Registra a entrada no histórico
+        cursor.execute("""
+            INSERT INTO movimentacao_estoque (
+                id_estoque,
+                tipo,
+                quantidade,
+                motivo,
+                quantidade_anterior,
+                quantidade_posterior
+            )
+            VALUES (?, 'entrada', ?, ?, ?, ?)
+        """, (
+            id_estoque,
+            quantidade,
+            motivo,
+            quantidade_anterior,
+            quantidade_posterior
+        ))
+
+        conexao.commit()
+
+        return jsonify({
+            "mensagem": "Entrada registrada com sucesso.",
+            "quantidade_anterior": quantidade_anterior,
+            "quantidade_adicionada": quantidade,
+            "quantidade_posterior": quantidade_posterior
+        }), 201
+
+    except Exception as erro:
+
+        conexao.rollback()
+
+        print(f"Erro ao registrar entrada: {erro}")
+
+        return jsonify({
+            "erro": "Não foi possível registrar a entrada."
+        }), 500
+
+    finally:
+        cursor.close()
+        conexao.close()
 
 
 # ==========================================
