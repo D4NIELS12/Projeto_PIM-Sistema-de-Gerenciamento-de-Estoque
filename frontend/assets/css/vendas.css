@@ -1,0 +1,237 @@
+
+/* ==============================
+   TELA DE VENDAS - AUTOFLOW
+   ============================== */
+
+/* Área principal */
+.vendas-container {
+    padding: 24px;
+}
+
+/* Título da página */
+.vendas-titulo {
+    margin-bottom: 24px;
+}
+
+.vendas-titulo h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 6px;
+}
+
+.vendas-titulo p {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+/* Organização das duas colunas */
+.vendas-conteudo {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 24px;
+    align-items: start;
+}
+
+/* Área de produtos */
+.vendas-produtos,
+.vendas-carrinho {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 22px;
+}
+
+/* Títulos dos blocos */
+.vendas-produtos h3,
+.vendas-carrinho h3 {
+    font-size: 17px;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 18px;
+}
+
+/* Campo de pesquisa */
+.vendas-busca {
+    margin-bottom: 20px;
+}
+
+.vendas-busca input {
+    width: 100%;
+    height: 42px;
+    padding: 0 14px;
+    border: 1px solid #e5e7eb;
+    border-radius: 7px;
+    outline: none;
+    font-family: inherit;
+    font-size: 13px;
+}
+
+.vendas-busca input:focus {
+    border-color: #bf2626;
+}
+
+/* Mensagem do carrinho vazio */
+.carrinho-vazio {
+    color: #9ca3af;
+    font-size: 13px;
+    text-align: center;
+    padding: 30px 10px;
+}
+
+/* Total da venda */
+.carrinho-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #e5e7eb;
+    margin-top: 20px;
+    padding-top: 18px;
+}
+
+.carrinho-total span {
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.carrinho-total strong {
+    font-size: 20px;
+    color: #bf2626;
+}
+
+/* Botão finalizar venda */
+#btnFinalizarVenda {
+    width: 100%;
+    height: 44px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 7px;
+    background-color: #bf2626;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#btnFinalizarVenda:hover {
+    background-color: #a51f1f;
+}
+
+
+/* ==============================
+   CARTÕES DE PRODUTOS
+   ============================== */
+
+#listaProdutosVenda {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+/* Cartão individual */
+.produto-venda-card {
+    padding: 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background-color: #ffffff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.produto-venda-card:hover {
+    border-color: #bf2626;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+}
+
+/* Nome do produto */
+.produto-venda-card h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 10px;
+}
+
+/* Código e estoque */
+.produto-venda-card p {
+    font-size: 12px;
+    color: #6b7280;
+    margin-bottom: 7px;
+}
+
+/* Preço */
+.produto-venda-card strong {
+    display: block;
+    font-size: 16px;
+    color: #bf2626;
+    margin-bottom: 8px;
+}
+
+/* Botão adicionar produto */
+.btn-adicionar-produto {
+    width: 100%;
+    padding: 9px;
+    margin-top: 12px;
+    border: none;
+    border-radius: 6px;
+    background-color: #bf2626;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-adicionar-produto:hover {
+    background-color: #a51f1f;
+}
+
+/* Produtos no carrinho */
+.item-carrinho {
+    padding: 12px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.item-carrinho strong {
+    font-size: 13px;
+    color: #1f2937;
+}
+
+.item-carrinho p {
+    margin-top: 6px;
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.item-carrinho button {
+    margin-top: 10px;
+    margin-right: 5px;
+    padding: 5px 9px;
+    border: 1px solid #e5e7eb;
+    border-radius: 5px;
+    background: white;
+    cursor: pointer;
+}
+
+.item-carrinho button:hover {
+    border-color: #bf2626;
+    color: #bf2626;
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+    .vendas-conteudo {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .vendas-container {
+        padding: 16px;
+    }
+}
+
+/* Adaptação para telas menores */
+@media (max-width: 1100px) {
+    #listaProdutosVenda {
+        grid-template-columns: 1fr;
+    }
+}
