@@ -6,6 +6,7 @@ from routes.indicadores import indicadores_bp
 from routes.graficos import graficos_bp
 from routes.movimentacoes import movimentacoes_bp
 from routes.vendas import vendas_bp
+from routes.fornecedores import fornecedores_bp
 
 
 app = Flask(__name__)
@@ -17,6 +18,7 @@ app.register_blueprint(indicadores_bp)
 app.register_blueprint(graficos_bp)
 app.register_blueprint(movimentacoes_bp)
 app.register_blueprint(vendas_bp)
+app.register_blueprint(fornecedores_bp)
 
 
 if __name__ == "__main__":

@@ -414,36 +414,4 @@ def listar_categorias():
     finally:
         cursor.close()
         conexao.close()
-
-
-# ==========================================
-# LISTAR FORNECEDORES
-# ==========================================
-
-@produtos_bp.route("/api/fornecedores", methods=["GET"])
-def listar_fornecedores():
-    conexao = conectar_banco()
-    cursor = conexao.cursor()
-
-    try:
-        cursor.execute("""
-            SELECT id_fornecedor, nome
-            FROM fornecedor
-            ORDER BY nome
-        """)
-
-        resultados = cursor.fetchall()
-
-        fornecedores = [
-            {
-                "id": linha[0],
-                "nome": linha[1]
-            }
-            for linha in resultados
-        ]
-
-        return jsonify(fornecedores)
-
-    finally:
-        cursor.close()
-        conexao.close()
+        
