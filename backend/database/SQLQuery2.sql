@@ -7,6 +7,7 @@ CREATE DATABASE PIM_Oficina_Estoque;
 
 USE PIM_Oficina_Estoque;
 
+<<<<<<< HEAD
 
 -- ==========================================
 -- 1. USUÁRIO
@@ -23,6 +24,10 @@ CREATE TABLE usuario (
 
 -- ==========================================
 -- 2. CATEGORIA
+=======
+-- ==========================================
+-- 1. CATEGORIA
+>>>>>>> da2339c476046f8e88f086822c63c7947fe7527d
 -- ==========================================
 
 CREATE TABLE categoria (
@@ -32,7 +37,11 @@ CREATE TABLE categoria (
 );
 
 -- ==========================================
+<<<<<<< HEAD
 -- 3. FORNECEDOR
+=======
+-- 2. FORNECEDOR
+>>>>>>> da2339c476046f8e88f086822c63c7947fe7527d
 -- ==========================================
 
 CREATE TABLE fornecedor (
@@ -40,6 +49,7 @@ CREATE TABLE fornecedor (
     nome VARCHAR(150) NOT NULL,
     telefone VARCHAR(11),
     email VARCHAR(120),
+<<<<<<< HEAD
     CNPJ VARCHAR(14),
     tipo VARCHAR(20) NOT NULL DEFAULT 'Nacional',
     cidade VARCHAR(100),
@@ -49,6 +59,13 @@ CREATE TABLE fornecedor (
 
 -- ==========================================
 -- 4. PRODUTO
+=======
+    CNPJ VARCHAR(14)
+);
+
+-- ==========================================
+-- 3. PRODUTO
+>>>>>>> da2339c476046f8e88f086822c63c7947fe7527d
 -- ==========================================
 
 CREATE TABLE produto (
@@ -78,7 +95,11 @@ CREATE TABLE produto (
 );
 
 -- ==========================================
+<<<<<<< HEAD
 -- 5. ESTOQUE
+=======
+-- 4. ESTOQUE
+>>>>>>> da2339c476046f8e88f086822c63c7947fe7527d
 -- ==========================================
 
 CREATE TABLE estoque (
@@ -99,7 +120,11 @@ CREATE TABLE estoque (
 );
 
 -- ==========================================
+<<<<<<< HEAD
 -- 6. VENDA
+=======
+-- 5. VENDA
+>>>>>>> da2339c476046f8e88f086822c63c7947fe7527d
 -- ==========================================
 
 CREATE TABLE venda (
@@ -116,7 +141,11 @@ CREATE TABLE venda (
 );
 
 -- ==========================================
+<<<<<<< HEAD
 -- 7. ITEM DA VENDA
+=======
+-- 6. ITEM DA VENDA
+>>>>>>> da2339c476046f8e88f086822c63c7947fe7527d
 -- ==========================================
 
 CREATE TABLE item_venda (
@@ -144,7 +173,11 @@ CREATE TABLE item_venda (
 );
 
 -- ==========================================
+<<<<<<< HEAD
 -- 8. MOVIMENTAÇÃO DE ESTOQUE
+=======
+-- 7. MOVIMENTAÇÃO DE ESTOQUE
+>>>>>>> da2339c476046f8e88f086822c63c7947fe7527d
 -- ==========================================
 
 CREATE TABLE movimentacao_estoque (

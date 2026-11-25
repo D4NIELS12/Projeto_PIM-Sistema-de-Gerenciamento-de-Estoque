@@ -382,4 +382,39 @@ def excluir_produto(id_produto):
         cursor.close()
         conexao.close()
 
+<<<<<<< HEAD
+=======
+        
+# ==========================================
+# LISTAR CATEGORIAS
+# ==========================================
+
+@produtos_bp.route("/api/categorias", methods=["GET"])
+def listar_categorias():
+    conexao = conectar_banco()
+    cursor = conexao.cursor()
+
+    try:
+        cursor.execute("""
+            SELECT id_categoria, nome
+            FROM categoria
+            ORDER BY nome
+        """)
+
+        resultados = cursor.fetchall()
+
+        categorias = [
+            {
+                "id": linha[0],
+                "nome": linha[1]
+            }
+            for linha in resultados
+        ]
+
+        return jsonify(categorias)
+
+    finally:
+        cursor.close()
+        conexao.close()
+>>>>>>> da2339c476046f8e88f086822c63c7947fe7527d
         

@@ -4,6 +4,7 @@ const API_URL = "http://127.0.0.1:5000/api/produtos";
 let produtos = [];
 let idProdutoEditando = null;
 
+<<<<<<< HEAD
 // ==========================================
 // CONTROLE DAS ABAS DO ESTOQUE
 // ==========================================
@@ -39,6 +40,8 @@ abasEstoque.forEach(aba => {
 
 });
 
+=======
+>>>>>>> da2339c476046f8e88f086822c63c7947fe7527d
 // Carrega os produtos do backend
 async function carregarProdutos() {
     const tabela = document.getElementById("tabelaProdutos");
