@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AUTOFLOW - Vendas</title>
+
+    <!-- Fonte Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../assets/img/icob.png">
+    <link rel="icon" type="image/x-icon" sizes="512x512" href="../assets/img/icob.png">
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/vendas.css">
+</head>
+
+<body>
+
+    <div class="dashboard-layout">
+
+
+        <!-- MENU LATERAL -->
+        <aside class="sidebar">
+
+            <div class="sidebar-logo-container">
+                <img src="../assets/img/logo.png" alt="AUTOFLOW Logo" class="sidebar-logo">
+            </div>
+
+            <nav class="nav-list">
+
+                <a href="../pages/dashboard.html" class="nav-item">
+                    <svg class="nav-icon" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <path d="M2 2H8V8H2V2Z" stroke="white" stroke-width="2" stroke-linecap="round" />
+                        <path d="M10 2H16V8H10V2Z" stroke="white" stroke-width="2" stroke-linecap="round" />
+                        <path d="M2 10H8V16H2V10Z" stroke="white" stroke-width="2" stroke-linecap="round" />
+                        <path d="M10 10H16V16H10V10Z" stroke="white" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="../pages/estoque.html" class="nav-item">
+                    <svg class="nav-icon opacity-80" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <path
+                            d="M2 4.5H16M3 4.5V14.5C3 15.0523 3.44772 15.5 4 15.5H14C14.5523 15.5 15 15.0523 15 14.5V4.5M6 4.5V2.5C6 1.94772 6.44772 1.5 7 1.5H11C11.5523 1.5 12 1.94772 12 2.5V4.5"
+                            stroke="white" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                    <span>Estoque</span>
+                </a>
+
+                <a href="../pages/vendas.html" class="nav-item active">
+                    <svg class="nav-icon opacity-80" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <circle cx="7" cy="15" r="1" stroke="white" stroke-width="2" />
+                        <circle cx="14" cy="15" r="1" stroke="white" stroke-width="2" />
+                        <path
+                            d="M1 1.5H3.5L5.68 11.39C5.77 11.8 6.13 12.1 6.55 12.1H14.5C14.92 12.1 15.28 11.8 15.37 11.39L16.5 6.5H4.5"
+                            stroke="white" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                    <span>Vendas</span>
+                </a>
+
+                <a href="../pages/fornecedores.html" class="nav-item">
+                    <svg class="nav-icon opacity-80" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <path
+                            d="M1 12.5H13M13 12.5L16.5 8.5H13V4.5H1V12.5ZM4.5 15.5C5.32843 15.5 6 14.8284 6 14C6 13.1716 5.32843 12.5 4.5 12.5C3.67157 12.5 3 13.1716 3 14C3 14.8284 3.67157 15.5 4.5 15.5ZM12.5 15.5C13.3284 15.5 14 14.8284 14 14C14 13.1716 13.3284 12.5 12.5 12.5C11.6716 12.5 11 13.1716 11 14C11 14.8284 11.6716 15.5 12.5 15.5Z"
+                            stroke="white" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                    <span>Fornecedores</span>
+                </a>
+
+                <a href="../pages/movimentacoes.html" class="nav-item">
+                   <svg class="nav-icon opacity-80" width="18" height="17" viewBox="0 0 18 17" fill="none">
+                        <path d="M12.5 3.5L15.5 6.5L12.5 9.5M15.5 6.5H2.5M5.5 14.5L2.5 11.5L5.5 8.5M2.5 11.5H15.5"
+                            stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <span>Movimentações</span>
+                </a>
+
+            </nav>
+
+            <a href="../pages/index.html" class="sidebar-footer">
+                <svg class="nav-icon opacity-80" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <path
+                        d="M6.5 15.5H3.5C2.94772 15.5 2.5 15.0523 2.5 14.5V3.5C2.5 2.94772 2.94772 2.5 3.5 2.5H6.5M11.5 12.5L15.5 9L11.5 5.5M15.5 9H6.5"
+                        stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <span>Sair</span>
+            </a>
+
+        </aside>
+
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="main-content">
+
+            <!-- CABEÇALHO -->
+            <header class="header">
+
+                <div class="header-left">
+
+                    <div class="breadcrumbs">
+                        Início / Vendas
+                    </div>
+
+                    <h1>Vendas</h1>
+
+                </div>
+
+                <!--
+                <div class="header-right">
+
+                    <div class="search-box">
+                        <input type="text" placeholder="Buscar...">
+                    </div>
+
+                    <div class="profile">
+
+                        <div class="avatar">AD</div>
+
+                        <div>
+                            <span class="profile-name">Admin</span>
+                            <span class="profile-role">Administrador</span>
+                        </div>
+
+                    </div>
+
+                </div>-->
+
+            </header>
+
+            <!-- ÁREA DE VENDAS -->
+            <section class="content-body">
+
+                <div class="vendas-container">
+
+                    <div class="vendas-titulo">
+                        <h2>Nova venda</h2>
+                        <p>Selecione os produtos e registre uma venda.</p>
+                    </div>
+
+                    <!-- ÁREA DE SELEÇÃO DE PRODUTOS -->
+                    <div class="vendas-conteudo">
+
+                        <div class="vendas-produtos">
+
+                            <h3>Selecionar produtos</h3>
+
+                            <div class="vendas-busca">
+                                <input type="text" id="buscarProdutoVenda"
+                                    placeholder="Buscar produto pelo nome ou código...">
+                            </div>
+
+                            <div id="listaProdutosVenda">
+                                <!-- Produtos serão carregados pelo JavaScript -->
+                            </div>
+
+                        </div>
+
+                        <!-- CARRINHO DA VENDA -->
+                        <div class="vendas-carrinho">
+
+                            <h3>Resumo da venda</h3>
+
+                            <div id="itensCarrinho">
+
+                                <p class="carrinho-vazio">
+                                    Nenhum produto adicionado.
+                                </p>
+
+                            </div>
+
+                            <div class="carrinho-total">
+
+                                <span>Total</span>
+
+                                <strong id="valorTotal">
+                                    R$ 0,00
+                                </strong>
+
+                            </div>
+
+                            <button type="button" id="btnFinalizarVenda">
+                                Finalizar venda
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="../assets/js/vendas.js"></script>
+
+</body>
+
+</html>

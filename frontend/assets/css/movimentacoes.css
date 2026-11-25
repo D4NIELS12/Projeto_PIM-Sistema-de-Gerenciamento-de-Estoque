@@ -1,0 +1,177 @@
+
+/* ==========================================
+   PÁGINA DE MOVIMENTAÇÕES
+========================================== */
+
+.movimentacoes-cards {
+    margin-bottom: 30px;
+}
+
+.movimentacoes-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.movimentacoes-header h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.movimentacoes-header p {
+    font-size: 13px;
+    color: #777;
+}
+
+
+/* ==========================================
+   FILTROS
+========================================== */
+
+.movimentacoes-filtros {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+}
+
+.movimentacoes-filtros input,
+.movimentacoes-filtros select {
+    height: 42px;
+    padding: 0 14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    background: #fff;
+    color: #333;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    outline: none;
+}
+
+.movimentacoes-filtros input {
+    flex: 1;
+    min-width: 200px;
+}
+
+.movimentacoes-filtros select {
+    min-width: 180px;
+    cursor: pointer;
+}
+
+.movimentacoes-filtros input:focus,
+.movimentacoes-filtros select:focus {
+    border-color: #bf2626;
+}
+
+
+/* ==========================================
+   TABELA
+========================================== */
+
+.movimentacoes-header + .movimentacoes-filtros {
+    margin-top: 10px;
+}
+
+#tabelaMovimentacoes td {
+    font-size: 12px;
+    vertical-align: middle;
+}
+
+#tabelaMovimentacoes td:nth-child(7) {
+    min-width: 150px;
+}
+
+#tabelaMovimentacoes td:last-child {
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   IDENTIFICAÇÃO DOS TIPOS
+========================================== */
+
+.status-movimentacao {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 5px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.status-entrada {
+    background: #e3f5e9;
+    color: #238344;
+}
+
+.status-saida {
+    background: #fde5e5;
+    color: #bd2525;
+}
+
+.status-ajuste {
+    background: #e8eefc;
+    color: #2455a4;
+}
+
+/* ==========================================
+   AÇÕES DO CABEÇALHO DO ESTOQUE
+========================================== */
+
+.estoque-acoes {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-entrada {
+    background-color: #ffffff;
+    color: #b42323;
+    border: 1px solid #b42323;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-entrada:hover {
+    background-color: #fff1f1;
+}
+
+
+/* ==========================================
+   RESPONSIVIDADE
+========================================== */
+
+@media (max-width: 900px) {
+
+    .movimentacoes-filtros {
+        flex-wrap: wrap;
+    }
+
+    .movimentacoes-filtros input,
+    .movimentacoes-filtros select {
+        flex: 1;
+        min-width: 100%;
+    }
+
+    .table-container {
+        overflow-x: auto;
+    }
+
+    .custom-table {
+        min-width: 1000px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .movimentacoes-header {
+        align-items: flex-start;
+    }
+
+}

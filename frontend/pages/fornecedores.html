@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoFlow - Fornecedores</title>
+
+    <!-- Fonte Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../assets/img/icob.png">
+    <link rel="icon" type="image/x-icon" sizes="512x512" href="../assets/img/icob.png">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/fornecedores.css">
+</head>
+
+<body>
+
+    <div class="dashboard-layout">
+
+        <!-- MENU LATERAL -->
+        <aside class="sidebar">
+
+            <div class="sidebar-logo-container">
+                <img src="../assets/img/logo.png" alt="AUTOFLOW Logo" class="sidebar-logo">
+            </div>
+
+            <nav class="nav-list">
+
+                <a href="../pages/dashboard.html" class="nav-item">
+                    <svg class="nav-icon" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <path d="M2 2H8V8H2V2Z" stroke="white" stroke-width="2" stroke-linecap="round" />
+                        <path d="M10 2H16V8H10V2Z" stroke="white" stroke-width="2" stroke-linecap="round" />
+                        <path d="M2 10H8V16H2V10Z" stroke="white" stroke-width="2" stroke-linecap="round" />
+                        <path d="M10 10H16V16H10V10Z" stroke="white" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="../pages/estoque.html" class="nav-item">
+                    <svg class="nav-icon opacity-80" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <path
+                            d="M2 4.5H16M3 4.5V14.5C3 15.0523 3.44772 15.5 4 15.5H14C14.5523 15.5 15 15.0523 15 14.5V4.5M6 4.5V2.5C6 1.94772 6.44772 1.5 7 1.5H11C11.5523 1.5 12 1.94772 12 2.5V4.5"
+                            stroke="white" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                    <span>Estoque</span>
+                </a>
+
+                <a href="../pages/vendas.html" class="nav-item">
+                    <svg class="nav-icon opacity-80" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <circle cx="7" cy="15" r="1" stroke="white" stroke-width="2" />
+                        <circle cx="14" cy="15" r="1" stroke="white" stroke-width="2" />
+                        <path
+                            d="M1 1.5H3.5L5.68 11.39C5.77 11.8 6.13 12.1 6.55 12.1H14.5C14.92 12.1 15.28 11.8 15.37 11.39L16.5 6.5H4.5"
+                            stroke="white" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                    <span>Vendas</span>
+                </a>
+
+                <a href="../pages/fornecedores.html" class="nav-item active">
+                    <svg class="nav-icon opacity-80" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <path
+                            d="M1 12.5H13M13 12.5L16.5 8.5H13V4.5H1V12.5ZM4.5 15.5C5.32843 15.5 6 14.8284 6 14C6 13.1716 5.32843 12.5 4.5 12.5C3.67157 12.5 3 13.1716 3 14C3 14.8284 3.67157 15.5 4.5 15.5ZM12.5 15.5C13.3284 15.5 14 14.8284 14 14C14 13.1716 13.3284 12.5 12.5 12.5C11.6716 12.5 11 13.1716 11 14C11 14.8284 11.6716 15.5 12.5 15.5Z"
+                            stroke="white" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                    <span>Fornecedores</span>
+                </a>
+
+                <a href="../pages/movimentacoes.html" class="nav-item">
+                    <svg class="nav-icon opacity-80" width="18" height="17" viewBox="0 0 18 17" fill="none">
+                        <path d="M12.5 3.5L15.5 6.5L12.5 9.5M15.5 6.5H2.5M5.5 14.5L2.5 11.5L5.5 8.5M2.5 11.5H15.5"
+                            stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <span>Movimentações</span>
+                </a>
+
+            </nav>
+
+            <a href="../pages/index.html" class="sidebar-footer">
+                <svg class="nav-icon opacity-80" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <path
+                        d="M6.5 15.5H3.5C2.94772 15.5 2.5 15.0523 2.5 14.5V3.5C2.5 2.94772 2.94772 2.5 3.5 2.5H6.5M11.5 12.5L15.5 9L11.5 5.5M15.5 9H6.5"
+                        stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <span>Sair</span>
+            </a>
+
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="main-content">
+
+            <!-- CABEÇALHO -->
+            <header class="header">
+
+                <div class="header-left">
+                    <div class="breadcrumbs">
+                        <span><a href="../pages/vendas.html" style="text-decoration: none; color: inherit;">Vendas</a> / <a href="../pages/movimentacoes.html" style="text-decoration: none; color: inherit;">Movimentações</a></span>
+                    </div>
+                    <h1>Fornecedores</h1>
+                </div>
+
+            </header>
+
+            <!-- CORPO DA PÁGINA -->
+            <div class="content-body">
+
+                <!-- BARRA DE FILTROS E BOTÃO NOVO FORNECEDOR -->
+                <div class="fornecedores-toolbar">
+                    <div class="filtros-pills">
+                        <select id="filtroTipo" class="filter-pill">
+                            <option value="">Tipo: Todos</option>
+                            <option value="Nacional">Tipo: Nacional</option>
+                            <option value="Internacional">Tipo: Internacional</option>
+                        </select>
+
+                        <select id="filtroCidade" class="filter-pill">
+                            <option value="">Cidade: Todas</option>
+                            <!-- Preenchido via JS -->
+                        </select>
+
+                        <select id="filtroCnpj" class="filter-pill">
+                            <option value="">CNPJ: Todos</option>
+                            <option value="informado">CNPJ: Informado</option>
+                            <option value="nao-informado">CNPJ: Não informado</option>
+                        </select>
+                    </div>
+
+                    <button type="button" id="btnNovoFornecedor" class="btn-novo-fornecedor">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M8 3V13M3 8H13" stroke="white" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                        <span>Novo Fornecedor</span>
+                    </button>
+                </div>
+
+                <!-- CONTAINER DA TABELA + PAGINAÇÃO -->
+                <section class="fornecedores-card">
+                    <div class="table-container">
+                        <table class="custom-table fornecedores-table">
+                            <thead>
+                                <tr>
+                                    <th>Fornecedor</th>
+                                    <th>Telefone</th>
+                                    <th>E-mail</th>
+                                    <th>Cidade</th>
+                                    <th>Tipo</th>
+                                    <th class="col-acoes">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabelaFornecedores">
+                                <!-- Renderizado via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- RODAPÉ DE PAGINAÇÃO -->
+                    <div class="table-pagination-footer">
+                        <span id="paginacaoInfo" class="pagination-info">Mostrando 0 a 0 de 0 resultados</span>
+
+                        <div id="paginacaoControles" class="pagination-controls">
+                            <!-- Botões gerados via JS -->
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <!--ADICIONAR / EDITAR-->
+
+    <div id="modalFornecedor" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div class="modal-header">
+                <div>
+                    <h2 id="modalTitulo">Adicionar fornecedor</h2>
+                    <p id="modalSubtitulo">Preencha os dados abaixo para registrar um novo fornecedor no sistema.</p>
+                </div>
+                <button type="button" class="btn-close-modal" id="btnFecharModalFornecedor" aria-label="Fechar">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M15 5L5 15M5 5L15 15" stroke="#374151" stroke-width="1.8" stroke-linecap="round" />
+                    </svg>
+                </button>
+            </div>
+
+            <form id="formFornecedor">
+                <input type="hidden" id="fornecedorId">
+
+                <div class="modal-body">
+                    <!-- Nome do fornecedor (Linha inteira) -->
+                    <div class="form-group full-width">
+                        <label for="inputNome">Nome do fornecedor e/ou Nome Fantasia *</label>
+                        <input type="text" id="inputNome" placeholder="Ex: Autopeças Sul" required>
+                    </div>
+
+                    <!-- CNPJ e Tipo (2 Colunas) -->
+                    <div class="form-row-2">
+                        <div class="form-group">
+                            <label for="inputCnpj">CNPJ</label>
+                            <input type="text" id="inputCnpj" placeholder="Não informado" maxlength="18">
+                            <span id="cnpjHelperText" class="field-helper">Campo ainda não preenchido.</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputTipo">Tipo *</label>
+                            <select id="inputTipo" required>
+                                <option value="Nacional">Nacional</option>
+                                <option value="Internacional">Internacional</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Telefone e E-mail (2 Colunas) -->
+                    <div class="form-row-2">
+                        <div class="form-group">
+                            <label for="inputTelefone">Telefone *</label>
+                            <input type="text" id="inputTelefone" placeholder="(11) 4002-8888" maxlength="15" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputEmail">E-mail *</label>
+                            <input type="email" id="inputEmail" placeholder="comercial@autosul.com.br" required>
+                        </div>
+                    </div>
+
+                    <!-- Cidade e UF (2 Colunas) -->
+                    <div class="form-row-2">
+                        <div class="form-group">
+                            <label for="inputCidade">Cidade *</label>
+                            <input type="text" id="inputCidade" placeholder="São Paulo" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputUf">UF *</label>
+                            <select id="inputUf" required>
+                                <option value="SP">SP</option>
+                                <option value="RJ">RJ</option>
+                                <option value="MG">MG</option>
+                                <option value="PR">PR</option>
+                                <option value="SC">SC</option>
+                                <option value="RS">RS</option>
+                                <option value="ES">ES</option>
+                                <option value="BA">BA</option>
+                                <option value="GO">GO</option>
+                                <option value="DF">DF</option>
+                                <option value="EX">Exterior</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn-modal-cancelar" id="btnCancelarFornecedor">Cancelar</button>
+                    <button type="submit" class="btn-modal-salvar">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M3 8.5L6.5 12L13.5 4.5" stroke="white" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        <span id="btnSalvarTexto">Salvar fornecedor</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: ADICIONAR / EDITAR OBSERVAÇÃO  -->
+    <div id="modalObservacao" class="modal-overlay hidden">
+        <div class="modal-box modal-box-sm">
+            <div class="modal-header">
+                <div>
+                    <h2>Observações do fornecedor</h2>
+                    <p id="obsFornecedorNome">Registre anotações internas, prazos ou condições.</p>
+                </div>
+                <button type="button" class="btn-close-modal" id="btnFecharModalObs" aria-label="Fechar">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M15 5L5 15M5 5L15 15" stroke="#374151" stroke-width="1.8" stroke-linecap="round" />
+                    </svg>
+                </button>
+            </div>
+
+            <form id="formObservacao">
+                <input type="hidden" id="obsFornecedorId">
+                <div class="modal-body">
+                    <div class="form-group full-width">
+                        <label for="inputObservacao">Anotação / Observação</label>
+                        <textarea id="inputObservacao" rows="4"
+                            placeholder="Ex: Entrega às terças e quintas. Prazo de pagamento 30/60 dias..."></textarea>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn-modal-cancelar" id="btnCancelarObs">Cancelar</button>
+                    <button type="submit" class="btn-modal-salvar">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M3 8.5L6.5 12L13.5 4.5" stroke="white" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        <span>Salvar observação</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script src="../assets/js/fornecedores.js"></script>
+
+</body>
+
+</html>
