@@ -7,8 +7,22 @@ CREATE DATABASE PIM_Oficina_Estoque;
 
 USE PIM_Oficina_Estoque;
 
+
 -- ==========================================
--- 1. CATEGORIA
+-- 1. USUÁRIO
+-- ==========================================
+
+CREATE TABLE usuario (
+    id_usuario INT IDENTITY(1,1) PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    senha_hash VARCHAR(255) NOT NULL,
+    data_cadastro DATETIME NOT NULL DEFAULT GETDATE(),
+    ativo BIT NOT NULL DEFAULT 1
+);
+
+-- ==========================================
+-- 2. CATEGORIA
 -- ==========================================
 
 CREATE TABLE categoria (
@@ -18,7 +32,7 @@ CREATE TABLE categoria (
 );
 
 -- ==========================================
--- 2. FORNECEDOR
+-- 3. FORNECEDOR
 -- ==========================================
 
 CREATE TABLE fornecedor (
@@ -26,11 +40,15 @@ CREATE TABLE fornecedor (
     nome VARCHAR(150) NOT NULL,
     telefone VARCHAR(11),
     email VARCHAR(120),
-    CNPJ VARCHAR(14)
-);
+    CNPJ VARCHAR(14),
+    tipo VARCHAR(20) NOT NULL DEFAULT 'Nacional',
+    cidade VARCHAR(100),
+    uf VARCHAR(2),
+    observacao VARCHAR(500),
+);    
 
 -- ==========================================
--- 3. PRODUTO
+-- 4. PRODUTO
 -- ==========================================
 
 CREATE TABLE produto (
@@ -60,7 +78,7 @@ CREATE TABLE produto (
 );
 
 -- ==========================================
--- 4. ESTOQUE
+-- 5. ESTOQUE
 -- ==========================================
 
 CREATE TABLE estoque (
@@ -81,7 +99,7 @@ CREATE TABLE estoque (
 );
 
 -- ==========================================
--- 5. VENDA
+-- 6. VENDA
 -- ==========================================
 
 CREATE TABLE venda (
@@ -98,7 +116,7 @@ CREATE TABLE venda (
 );
 
 -- ==========================================
--- 6. ITEM DA VENDA
+-- 7. ITEM DA VENDA
 -- ==========================================
 
 CREATE TABLE item_venda (
@@ -126,7 +144,7 @@ CREATE TABLE item_venda (
 );
 
 -- ==========================================
--- 7. MOVIMENTAÇÃO DE ESTOQUE
+-- 8. MOVIMENTAÇÃO DE ESTOQUE
 -- ==========================================
 
 CREATE TABLE movimentacao_estoque (

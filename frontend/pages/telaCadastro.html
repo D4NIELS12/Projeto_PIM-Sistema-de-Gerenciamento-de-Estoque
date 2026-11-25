@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoFlow - Cadastro</title>
+
+    <!-- Fonte Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Ícones -->
+    <link rel="icon" type="image/x-icon" href="../assets/img/icob.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/telaCadastro.css">
+</head>
+
+<body>
+
+    <div class="tela-cadastro">
+
+        <!-- Sidebar Esquerda -->
+        <aside class="sidebar-area">
+
+            <div class="brand-container">
+                <img src="../assets/img/logo.png" alt="AUTOFLOW Logo" class="brand-logo">
+            </div>
+
+            <div class="divider-line"></div>
+
+            <div class="sidebar-middle-info">
+                <h2>Organize, Controle e Evolua</h2>
+
+                <p>
+                    Gerencie seus produtos, acompanhe seu estoque e tenha
+                    controle das movimentações em uma plataforma integrada.
+                </p>
+            </div>
+
+            <a href="../pages/index.html" class="sidebar-link-back">
+                <svg class="icon-arrow" viewBox="0 0 16 16" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 12L4 8L10 4" stroke="#9CA3AF" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+
+                <span>Voltar ao Início</span>
+            </a>
+
+        </aside>
+
+        <!-- Área do Formulário -->
+        <main class="form-view-area">
+
+            <form class="cadastro-card" id="formCadastro">
+
+                <!-- Cabeçalho -->
+                <div class="form-header">
+                    <h1>Crie sua conta</h1>
+                    <p>Preencha os dados para acessar o AutoFlow</p>
+                </div>
+
+                <!-- Campos -->
+                <div class="inputs-fields">
+
+                    <!-- Nome -->
+                    <div class="field-group">
+                        <label for="nome">Nome completo</label>
+
+                        <div class="input-wrapper">
+                            <input type="text" id="nome" placeholder="Digite seu nome completo"
+                                maxlength="100" required>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="field-group">
+                        <label for="email">Endereço de E-mail</label>
+
+                        <div class="input-wrapper">
+                            <input type="email" id="email" placeholder="seu@email.com"
+                                maxlength="150" required>
+                        </div>
+                    </div>
+
+                    <!-- Senha -->
+                    <div class="field-group">
+                        <label for="password">Senha</label>
+
+                        <div class="input-wrapper">
+                            <input type="password" id="password" placeholder="Mínimo de 6 caracteres"
+                                minlength="6" required>
+                        </div>
+                    </div>
+
+                    <!-- Confirmar Senha -->
+                    <div class="field-group">
+                        <label for="confirmPassword">Confirmar senha</label>
+
+                        <div class="input-wrapper">
+                            <input type="password" id="confirmPassword"
+                                placeholder="Digite a senha novamente" minlength="6" required>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Botão -->
+                <div class="form-actions-bottom">
+
+                    <button type="submit" class="btn-cadastrar-action">
+                        Criar Conta
+                    </button>
+
+                    <div class="register-text-row">
+                        <span>Já possui uma conta?
+                            <a href="telaLogin.html" class="link-login">Entrar</a>
+                        </span>
+                    </div>
+
+                </div>
+
+            </form>
+
+        </main>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../assets/js/telaCadastro.js"></script>
+
+</body>
+
+</html>

@@ -3,6 +3,7 @@
 // ==========================================
 
 const formLogin = document.getElementById("formLogin");
+
 const campoEmail = document.getElementById("email");
 const campoSenha = document.getElementById("password");
 
@@ -31,7 +32,7 @@ formLogin.addEventListener("submit", async function (event) {
         const dados = await resposta.json();
 
         if (!resposta.ok) {
-            alert(dados.erro);
+            alert(dados.erro || "Erro ao realizar login.");
             return;
         }
 
@@ -40,7 +41,7 @@ formLogin.addEventListener("submit", async function (event) {
         window.location.href = "dashboard.html";
 
     } catch (erro) {
-        console.error("Erro ao conectar com o servidor:", erro);
+        console.error("Erro ao realizar login:", erro);
         alert("Não foi possível conectar ao servidor.");
     }
 });

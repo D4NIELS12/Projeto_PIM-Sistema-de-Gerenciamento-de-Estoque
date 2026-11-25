@@ -336,6 +336,31 @@ body, html {
 .legend-dot.green { background-color: #10b981; }
 .legend-dot.blue { background-color: #3b82f6; }
 
+/* Cabeçalho do gráfico de vendas */
+.sales-chart-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* Filtro de período dentro do gráfico */
+.sales-chart-header .period-filter {
+    padding: 6px 10px;
+}
+
+/* Select do período */
+.period-filter select {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #111827;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+}
+
 /* Tabela e Filtros */
 .table-section-wrapper {
     display: flex;

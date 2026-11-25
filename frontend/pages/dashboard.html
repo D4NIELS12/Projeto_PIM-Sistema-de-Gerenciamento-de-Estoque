@@ -70,7 +70,7 @@
                 </a>
             </nav>
 
-            <a href="../pages/index.html" class="sidebar-footer">
+            <a href="../pages/index.html" class="sidebar-footer" id="btnLogout">
                 <svg class="nav-icon opacity-80" width="18" height="18" viewBox="0 0 18 18" fill="none">
                     <path
                         d="M6.5 15.5H3.5C2.94772 15.5 2.5 15.0523 2.5 14.5V3.5C2.5 2.94772 2.94772 2.5 3.5 2.5H6.5M11.5 12.5L15.5 9L11.5 5.5M15.5 9H6.5"
@@ -110,18 +110,18 @@
                     <div class="card">
                         <span class="card-title">Vendas no Período</span>
                         <span class="card-value" id="valorVendas">R$ 0,00</span>
-                        <div class="card-footer positive">
-                            <span class="dot green"></span>
-                            <span>+12,7% vs mês anterior</span>
+                        <div class="card-footer">
+                            <span class="dot gray"></span>
+                            <span>Valor total</span>
                         </div>
                     </div>
 
                     <div class="card">
                         <span class="card-title">Pedidos Realizados</span>
                         <span class="card-value" id="quantidadeVendas">0</span>
-                        <div class="card-footer positive">
-                            <span class="dot green"></span>
-                            <span>+8,2% vs mês anterior</span>
+                        <div class="card-footer">
+                            <span class="dot gray"></span>
+                            <span>Total pedidos</span>
                         </div>
                     </div>
 
@@ -147,13 +147,26 @@
                 <!-- Seção de Gráficos -->
                 <div class="charts-row">
 
-                    <!-- Gráfico de vendas por mês -->
                     <section class="sales-chart">
-                        <h3>Vendas nos últimos 6 meses</h3>
+
+                        <div class="sales-chart-header">
+                            <h3>Vendas por Período</h3>
+
+                            <div class="period-filter">
+                                <label for="periodFilter">Período:</label>
+
+                                <select id="periodFilter">
+                                    <option value="30dias">Últimos 30 dias</option>
+                                    <option value="6meses" selected>Últimos 6 meses</option>
+                                    <option value="ano">Este ano</option>
+                                </select>
+                            </div>
+                        </div>
 
                         <div class="chart-container">
                             <canvas id="salesChart"></canvas>
                         </div>
+
                     </section>
 
                     <!-- Gráfico de vendas por categoria -->
@@ -170,22 +183,12 @@
                 <!-- Filtros e Tabela de Estoque Crítico -->
                 <div class="table-section-wrapper">
                     <div class="header-filters">
-                        <div class="period-filter">
-                            <label for="periodFilter">Período:</label>
-
-                            <select id="periodFilter">
-                                <option value="30dias">Últimos 30 dias</option>
-                                <option value="6meses" selected>Últimos 6 meses</option>
-                                <option value="ano">Este ano</option>
-                            </select>
-                        </div>
-                        <button class="btn-export">Exportar Relatório</button>
                     </div>
 
                     <div class="table-container">
                         <div class="table-header-title">
                             <h3>Produtos com Estoque Crítico / Baixo</h3>
-                            <a href="#" class="link-ver-todos">Ver todos</a>
+                            <a href="../pages/estoque.html" class="link-ver-todos">Ver todos</a>
                         </div>
 
                         <table class="custom-table">
@@ -213,6 +216,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../assets/js/dashboard.js"></script>
+    <script src="../assets/js/logout.js"></script>
 </body>
 
 </html>

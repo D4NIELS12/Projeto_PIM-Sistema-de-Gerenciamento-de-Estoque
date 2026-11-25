@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoFlow - Redefinir Senha</title>
+
+    <!-- Fonte Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Ícone -->
+    <link rel="icon" type="image/x-icon" href="../assets/img/icob.png">
+
+    <!-- CSS reutilizado -->
+    <link rel="stylesheet" href="../assets/css/esqueciSenha.css">
+</head>
+
+<body>
+
+    <div class="tela-login">
+
+        <!-- Sidebar -->
+        <aside class="sidebar-area">
+
+            <div class="brand-container">
+                <img src="../assets/img/logo.png" alt="AUTOFLOW Logo" class="brand-logo">
+            </div>
+
+            <div class="divider-line"></div>
+
+            <div class="sidebar-middle-info">
+                <h2>Controle absoluto em suas mãos.</h2>
+
+                <p>
+                    Monitore o estoque mínimo, analise o giro de peças de reposição
+                    e gerencie fornecedores em uma plataforma integrada e veloz.
+                </p>
+            </div>
+
+            <a href="telaLogin.html" class="sidebar-link-back">
+                <svg class="icon-arrow" viewBox="0 0 16 16" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 12L4 8L10 4" stroke="#9CA3AF" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <span>Voltar ao Login</span>
+            </a>
+
+        </aside>
+
+        <!-- Formulário -->
+        <main class="form-view-area">
+
+            <form class="login-card" id="formRedefinirSenha">
+
+                <div class="form-header">
+                    <h1>Nova senha</h1>
+                    <p>Crie uma nova senha para acessar sua conta</p>
+                </div>
+
+                <div class="inputs-fields">
+
+                    <!-- Nova senha -->
+                    <div class="field-group">
+                        <label for="novaSenha">Nova senha</label>
+
+                        <div class="input-wrapper">
+                            <input type="password" id="novaSenha"
+                                placeholder="Digite sua nova senha" required>
+                        </div>
+                    </div>
+
+                    <!-- Confirmar senha -->
+                    <div class="field-group">
+                        <label for="confirmarSenha">Confirmar nova senha</label>
+
+                        <div class="input-wrapper">
+                            <input type="password" id="confirmarSenha"
+                                placeholder="Confirme sua nova senha" required>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Botão -->
+                <div class="form-actions-bottom">
+
+                    <button type="submit" class="btn-entrar-action">
+                        Redefinir senha
+                    </button>
+
+                    <div class="register-text-row">
+                        <span>
+                            Lembrou sua senha?
+                            <a href="telaLogin.html" class="link-register">Voltar ao login</a>
+                        </span>
+                    </div>
+
+                </div>
+
+            </form>
+
+        </main>
+
+    </div>
+
+    <script src="../assets/js/redefinirSenha.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoFlow - Recuperar Senha</title>
+
+    <!-- Fonte Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Ícone -->
+    <link rel="icon" type="image/x-icon" href="../assets/img/icob.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/esqueciSenha.css">
+</head>
+
+<body>
+
+    <div class="tela-login">
+
+        <!-- Sidebar Esquerda -->
+        <aside class="sidebar-area">
+
+            <div class="brand-container">
+                <img src="../assets/img/logo.png" alt="AUTOFLOW Logo" class="brand-logo">
+            </div>
+
+            <div class="divider-line"></div>
+
+            <div class="sidebar-middle-info">
+                <h2>Controle absoluto em suas mãos.</h2>
+
+                <p>
+                    Monitore o estoque mínimo, analise o giro de peças de reposição
+                    e gerencie fornecedores em uma plataforma integrada e veloz.
+                </p>
+            </div>
+
+            <a href="telaLogin.html" class="sidebar-link-back">
+                <svg class="icon-arrow" viewBox="0 0 16 16" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 12L4 8L10 4" stroke="#9CA3AF" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <span>Voltar ao Login</span>
+            </a>
+
+        </aside>
+
+        <!-- Área Central -->
+        <main class="form-view-area">
+
+            <form class="login-card" id="formEsqueciSenha">
+
+                <div class="form-header">
+                    <h1>Recuperar senha</h1>
+                    <p>Informe seu e-mail cadastrado para continuar</p>
+                </div>
+
+                <div class="inputs-fields">
+
+                    <!-- Campo E-mail -->
+                    <div class="field-group">
+
+                        <label for="email">Endereço de E-mail</label>
+
+                        <div class="input-wrapper">
+
+                            <svg class="input-icon" viewBox="0 0 18 18" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+
+                                <path d="M2.25 4.5H15.75V13.5H2.25V4.5Z"
+                                    stroke="#4B5563" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+
+                                <path d="M2.25 4.5L9 9.75L15.75 4.5"
+                                    stroke="#4B5563" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+
+                            </svg>
+
+                            <input type="email" id="email"
+                                placeholder="admin@autoflow.com" required>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Botão -->
+                <div class="form-actions-bottom">
+
+                    <button type="submit" class="btn-entrar-action">
+                        Continuar
+                    </button>
+
+                    <div class="register-text-row">
+                        <span>
+                            Lembrou sua senha?
+                            <a href="telaLogin.html" class="link-register">Voltar ao login</a>
+                        </span>
+                    </div>
+
+                </div>
+
+            </form>
+
+        </main>
+
+    </div>
+    
+    <script src="../assets/js/esqueciSenha.js"></script>
+
+</body>
+</html>

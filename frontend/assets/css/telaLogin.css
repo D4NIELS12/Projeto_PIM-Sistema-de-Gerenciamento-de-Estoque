@@ -204,11 +204,7 @@ body, html {
 }
 
 /* Checkbox Personalizado e Esqueceu a Senha */
-.actions-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+
 
 .remember-me-check {
     display: flex;
@@ -254,14 +250,27 @@ body, html {
     color: #4b5563;
 }
 
+/* Esqueci minha senha */
 .forgot-password {
-    font-size: 13px;
-    font-weight: 500;
+    width: 100%;
+    text-align: right;
+    margin-top: -10px;
+    margin-bottom: 15px;
+}
+
+.forgot-password {
     color: #bf2626;
     text-decoration: none;
+    text-align: right;
+    margin-top: -10px;
+    margin-bottom: 15px;
+    font-size: 13px;
+    font-weight: 500;
+    transition: color 0.2s ease;
 }
 
 .forgot-password:hover {
+    color: #991b1b;
     text-decoration: underline;
 }
 
