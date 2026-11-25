@@ -295,7 +295,6 @@
     max-width: 500px;
 }
 
-<<<<<<< HEAD
 /* ==========================================
    NAVEGAÇÃO DAS ABAS DO ESTOQUE
 ========================================== */
@@ -340,8 +339,6 @@
     display: block;
 }
 
-=======
->>>>>>> da2339c476046f8e88f086822c63c7947fe7527d
 /* Responsividade */
 @media (max-width: 600px) {
     .form-grid {

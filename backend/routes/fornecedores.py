@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> da2339c476046f8e88f086822c63c7947fe7527d
 from flask import Blueprint, jsonify, request
 from database.conexao import conectar_banco
 

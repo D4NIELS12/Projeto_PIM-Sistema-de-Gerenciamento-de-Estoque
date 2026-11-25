@@ -1,10 +1,7 @@
 
 from flask import Blueprint, jsonify, request
 from database.conexao import conectar_banco
-<<<<<<< HEAD
 from integracao_c import validar_quantidade
-=======
->>>>>>> da2339c476046f8e88f086822c63c7947fe7527d
 
 movimentacoes_bp = Blueprint("movimentacoes", __name__)
 
@@ -40,15 +37,12 @@ def ajustar_estoque(id_produto):
             "erro": "Informe uma quantidade inteira válida e não negativa."
         }), 400
 
-<<<<<<< HEAD
         # Validação complementar utilizando o módulo C
         if not validar_quantidade(quantidade):
             return jsonify({
                 "erro": "O módulo C rejeitou a quantidade informada."
         }), 400
 
-=======
->>>>>>> da2339c476046f8e88f086822c63c7947fe7527d
     # Valida o motivo
     if not isinstance(motivo, str) or not motivo.strip():
         return jsonify({

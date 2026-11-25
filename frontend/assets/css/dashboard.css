@@ -336,7 +336,6 @@ body, html {
 .legend-dot.green { background-color: #10b981; }
 .legend-dot.blue { background-color: #3b82f6; }
 
-<<<<<<< HEAD
 /* Cabeçalho do gráfico de vendas */
 .sales-chart-header {
     display: flex;
@@ -362,8 +361,6 @@ body, html {
     cursor: pointer;
 }
 
-=======
->>>>>>> da2339c476046f8e88f086822c63c7947fe7527d
 /* Tabela e Filtros */
 .table-section-wrapper {
     display: flex;
